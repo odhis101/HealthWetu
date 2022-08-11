@@ -13,6 +13,8 @@ const HomeLogo = (props) => {
     )
 }
 const styles = StyleSheet.create({
+  
+   
     Image:{
         
         paddingTop:20,

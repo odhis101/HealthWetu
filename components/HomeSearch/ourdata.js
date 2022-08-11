@@ -9,17 +9,56 @@ const OurData = (props) => {
             style= {styles.Image}
             source={require( '../../assets/face.jpg' )}
             />
+            <View style ={styles.containers}>
             <Text style= {styles.title}> Medical Id</Text>
+            <Text style={styles.border}></Text>
+            <View style ={styles.credentials}>
+                <Text style= {styles.first}> Name: Joshua Odhiambo </Text>
+                <Text style={styles.horizontalBorder}></Text>
+                <Text style= {styles.second}> Age:  21</Text>
+                
+                
+                
 
+            </View>
+             <View style ={styles.credentials}>
+                <Text style= {styles.first}> Weight: 68 kgs </Text>
+                <Text style={styles.horizontalBorder}></Text>
+                <Text style= {styles.second}> Height:  182cm</Text>
+                
+                
+                
 
+            </View>
+            <View style ={styles.credentials}>
+                <Text style= {styles.first}> Allergies: None </Text>
+                <Text style={styles.horizontalBorder}></Text>
+                <Text style= {styles.second}> </Text>
+          
+                
+                
 
+            </View>
+            
+            </View>
         </View>
         
    </View>
     )
 }
 const styles = StyleSheet.create({
-   container:{
+    first:{
+        width:200,
+        
+
+    },
+    second:{
+        width:150,
+        
+
+    },
+
+    container:{
     margin:10,
     backgroundColor:'white',
     width:370,
@@ -35,19 +74,51 @@ const styles = StyleSheet.create({
 
     elevation: 15,
    },
+   containers:{
+    margin:10,
+    backgroundColor:'white',
+    marginLeft:20,
+    width:330,
+    height:500,
+   
+   },
    Image:{
     marginTop: 10,
     marginLeft:20,
-    height:150,
-    width:150,
+    height:92,
+    width:92,
     borderRadius:150
    },
    title:{
     marginTop: 15,
-    marginLeft:10,
-    fontSize:30,
+  
+    fontSize:25,
     fontWeight:'600',
-   }
+   },
+   border:{
+    marginLeft:10,
+    marginTop:10,
+    justifyContent:'center',
+    alignItems:'center',
+    height:3,
+    width:50,
+    backgroundColor:'#ED1918'
+},
+horizontalBorder:{
+    margin:20,
+    justifyContent:'center',
+    alignItems:'center',
+    height:20,
+    width:2,
+    backgroundColor:'#ED1918'
+},
+credentials:{
+    backgroundColor:'#fff',
+    flexDirection:'row',
+    justifyContent: 'space-between',
+    alignItems:'center',
+    
+},
 
 });
 
