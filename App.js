@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import HomeScreen from './screens/HomeScreen';
 import Homesearch from './components/HomeSearch';
 import Destination from './screens/HomeScreen/DestinationSearch';
-
+import SearchResults from './screens/SearchResults';
 export default function App() {
   return (
     <View style={styles.container}>
@@ -19,7 +19,9 @@ export default function App() {
             </ScrollView>
       */}
   
-      <Destination/>
+      {/*<Destination/>*/}
+      
+    <SearchResults/>
 
     </View>
   );

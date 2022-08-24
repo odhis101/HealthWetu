@@ -27,9 +27,10 @@ const Destination = (props) => {
 
 
             <View style={styles.inputBox}>
-        
+            <TextInput value={fromText} onChangeText = {setFromText}placeholder="Destination" style={styles.inputText}></TextInput>
             <View style ={styles.Timebar}>
-            <AntDesign name ={'arrowright'} size ={16} color={'red'}></AntDesign> 
+                
+            <AntDesign name ={'arrowleft'} size ={16} color={'red'}></AntDesign> 
             
             </View>
             </View>
@@ -43,20 +44,16 @@ const Destination = (props) => {
     )
 }
 const styles = StyleSheet.create({
-
     container:{
         marginTop:40,
         marginLeft:10,
         marginRight:10,
-        height:800,
-     backgroundColor:'black',
+        height:'100%'
     },
   
     inputText:{
         fontSize:14,
         color:'black',
-
-
         
     },
     Timebar:{
