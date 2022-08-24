@@ -1,0 +1,4 @@
+- working on the front end on of the confriming request named it as SearchResults in app.js 
+- completed destination page (where the user inputs where they are going ) named Destination on app.js
+-  on destination page i will be working on configuring the maps api, i had postponed it for later as it looks like i am spending too much time fixing the api issues 
+- i have not yet enabled routing in the page but should have that complete today (24/08/2022 9:00 pm)

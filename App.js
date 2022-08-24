@@ -21,7 +21,7 @@ export default function App() {
   
       {/*<Destination/>*/}
       
-    <SearchResults/>
+    {<SearchResults/>}
 
     </View>
   );
