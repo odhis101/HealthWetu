@@ -4,10 +4,15 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Calling from './calling';
 import OurData from './ourdata';
+import OurButton from '../../shared/button';
 
 //import styles from './styles.js';
-const Homesearch = (props,{navigation}) => {
+const Homesearch = ({navigation}) => {
    
+    const pressHandler =() =>{
+        navigation.navigate('destination');
+        
+    }
     return(
         <ScrollView>
         <View>
@@ -16,6 +21,8 @@ const Homesearch = (props,{navigation}) => {
             source={require( '../../assets/HealthWetu.png' )}
             />
         {/* input bot */}
+        <Button title ='click me ' onPress={pressHandler} />
+        
         <View style={styles.inputBox}>
             <Text style={styles.inputText}> Where are you ?</Text>
             <View style ={styles.Timebar}>

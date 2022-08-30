@@ -1,21 +1,28 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, Image, TouchableOpacity, View,TextInput } from 'react-native';
+import { StyleSheet, Text, Image, TouchableOpacity, View,TextInput,Button } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Calling from '../../../components/HomeSearch/calling';
+import OurButton from '../../../shared/button';
 
 //import styles from './styles.js';
-const Destination = (props) => {
+
+
+   
+    
+   
+const Destination = ({navigation}) => {
     const [fromText, setFromText] = useState()
     const [destinationText,setDestinationText] = useState();
    const [originPlace,setOriginPlace]= useState()
    const [Desitnation,setDesitnation]= useState()
+   const pressHandler =() =>{
+    navigation.navigate('searchResults');
+    
+}
     return(
         <View>
             <View style ={styles.container}>
-            <View style ={styles.Timebar}>
-            <AntDesign name ={'arrowleft'} size ={12} color={'red'}></AntDesign> 
-            
-            </View>
             <View style={styles.inputBox}>
             <TextInput value={fromText} onChangeText = {setFromText}placeholder="Current Location" style={styles.inputText}></TextInput>
             <View style ={styles.Timebar}>
@@ -24,19 +31,13 @@ const Destination = (props) => {
             </View>
 
             </View>
-
-
-            <View style={styles.inputBox}>
-            <TextInput value={fromText} onChangeText = {setFromText}placeholder="Destination" style={styles.inputText}></TextInput>
-            <View style ={styles.Timebar}>
-                
-            <AntDesign name ={'arrowleft'} size ={16} color={'red'}></AntDesign> 
+            <Calling text = 'Current Location '/>
             
-            </View>
-            </View>
-            
+            <OurButton text='Custom Hospital' onPress={pressHandler}/>
+            <OurButton text='Nearest Hospital' onPress={pressHandler}/>
             
         </View>
+       
     
         </View>
         
