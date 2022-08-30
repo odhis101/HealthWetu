@@ -4,7 +4,7 @@ import RowTypes from '../VehicleTypesRow';
 import types from '../../assets/data/types';
 const Types = (props) => {
 const confirm = () => {
-  console.warm('confirm')
+  console.warn('confirm')
 }
     return(
         <View>
@@ -13,7 +13,7 @@ const confirm = () => {
 
           <Pressable onPress={confirm} style={styles.confirm}> 
               <Text style={styles.text}>
-                Confirm Request 
+                Confirm Requests
               </Text>
             </Pressable>
         </View>
@@ -21,12 +21,12 @@ const confirm = () => {
 }
 const styles = StyleSheet.create({
   confirm:{
-    width: '100%',
     padding: 10,
     margin:10,
     marginRight:10,
     backgroundColor:'red',
     alignItems:'center',
+    
   },
   text:{
     color:'white',

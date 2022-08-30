@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import HomeLogo from '../../components/homeLogo';
 import Types from '../../components/DiffrentTypes';

@@ -1,14 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, Image, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, Image, TouchableOpacity, View,ScrollView,Button} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Calling from './calling';
 import OurData from './ourdata';
+
 //import styles from './styles.js';
-const Homesearch = (props) => {
+const Homesearch = (props,{navigation}) => {
    
     return(
+        <ScrollView>
         <View>
+             <Image 
+            style= {styles.Image}
+            source={require( '../../assets/HealthWetu.png' )}
+            />
         {/* input bot */}
         <View style={styles.inputBox}>
             <Text style={styles.inputText}> Where are you ?</Text>
@@ -23,12 +29,8 @@ const Homesearch = (props) => {
         </View>
         <Calling text = 'calling for a friend '/>
         <OurData/>
-      
-        {/* input bot */}
-   
-
-        {/* input bot */}
    </View>
+   </ScrollView>
     )
 }
 const styles = StyleSheet.create({
@@ -40,6 +42,13 @@ const styles = StyleSheet.create({
 
 
         
+    },
+    Image:{
+        
+        paddingTop:20,
+        margin:50,
+        height:350,
+        width:'auto',
     },
     Timebar:{
         flexDirection:'row',

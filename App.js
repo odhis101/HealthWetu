@@ -5,28 +5,26 @@ import HomeScreen from './screens/HomeScreen';
 import Homesearch from './components/HomeSearch';
 import Destination from './screens/HomeScreen/DestinationSearch';
 import SearchResults from './screens/SearchResults';
-export default function App() {
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
+
+
+const App = () => {
   return (
-    <View style={styles.container}>
-       <StatusBar style="auto" />
-     {/*
-     <ScrollView>
-     
-      
-      <HomeScreen/>
-      <Homesearch/>
-  
-            </ScrollView>
-      */}
-  
-      {/*<Destination/>*/}
-      
-    {<SearchResults/>}
-
-    </View>
+    
+    <NavigationContainer>
+      <Stack.Navigator>
+        
+        <Stack.Screen
+          name="Home"
+          component={Homesearch}
+          
+        />
+        <Stack.Screen name="Destination" component={Homesearch} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
-
-const styles = StyleSheet.create({
-
-});
+};
+export default App;
