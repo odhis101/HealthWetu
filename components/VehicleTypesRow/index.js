@@ -16,7 +16,6 @@ const RowTypes = (props) => {
     return console.log('joshua')
   }
   const {type} = props ;
-
     return(
         <View style={styles.Container}>
           {/* image */}

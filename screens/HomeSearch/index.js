@@ -2,9 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, Image, TouchableOpacity, View,ScrollView,Button} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Calling from './calling';
-import OurData from './ourdata';
-import OurButton from '../../shared/button';
+import Calling from '../../components/calling';
+import OurData from '../../components/ourdata';
+import OurButton from '../../components/GoToButton';
+import ModuleButton from '../../components/moduleButton';
 
 //import styles from './styles.js';
 const Homesearch = ({navigation}) => {
@@ -21,21 +22,12 @@ const Homesearch = ({navigation}) => {
             source={require( '../../assets/HealthWetu.png' )}
             />
         {/* input bot */}
-        <Button title ='click me ' onPress={pressHandler} />
         
-        <View style={styles.inputBox}>
-            <Text style={styles.inputText}> Where are you ?</Text>
-            <View style ={styles.Timebar}>
-            <AntDesign name ={'arrowright'} size ={16} color={'red'}></AntDesign> 
-            
-            </View>
-           
-            
-            
-
-        </View>
-        <Calling text = 'calling for a friend '/>
+        
+        <OurButton text='Where are you ' onPress={pressHandler}/>
+        <ModuleButton text = 'calling for a friend '/>
         <OurData/>
+
    </View>
    </ScrollView>
     )

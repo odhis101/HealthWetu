@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, Image, TouchableOpacity, View,TextInput,Button } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Calling from '../../../components/HomeSearch/calling';
-import OurButton from '../../../shared/button';
-
+import Calling from '../../../components/calling';
+import OurButton from '../../../components/GoToButton';
+import ModuleButton from '../../../components/moduleButton';
 //import styles from './styles.js';
 
 
@@ -31,7 +31,7 @@ const Destination = ({navigation}) => {
             </View>
 
             </View>
-            <Calling text = 'Current Location '/>
+            <ModuleButton text = 'Current Location '/>
             
             <OurButton text='Custom Hospital' onPress={pressHandler}/>
             <OurButton text='Nearest Hospital' onPress={pressHandler}/>

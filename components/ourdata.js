@@ -7,7 +7,7 @@ const OurData = (props) => {
         <View style ={styles.container}>
         <Image 
             style= {styles.Image}
-            source={require( '../../assets/face.jpg' )}
+            source={require( '../assets/face.jpg' )}
             />
             <View style ={styles.containers}>
             <Text style= {styles.title}> Medical Id</Text>
