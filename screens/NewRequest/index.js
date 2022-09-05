@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View, Image,TextInput,Button,Pressa
 import HomeLogo from '../../components/homeLogo';
 import Types from '../../components/DiffrentTypes';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Ionicons from "react-native-vector-icons/Ionicons"
 const SearchResults = ({navigation}) => {
   const [fromText, setFromText] = useState()
   const [destinationText,setDestinationText] = useState();
@@ -16,6 +17,14 @@ const SearchResults = ({navigation}) => {
         <View>
           <View style ={styles.container}>
            
+            <View style={styles.inputBox}>
+            <TextInput value={fromText} onChangeText = {setFromText}placeholder="Current Location" style={styles.inputText}></TextInput>
+            <View style ={styles.Timebar}>
+            <AntDesign name ={'arrowright'} size ={16} color={'red'}></AntDesign> 
+            
+            </View>
+
+            </View>
             <View style={styles.inputBox}>
             <TextInput value={fromText} onChangeText = {setFromText}placeholder="Hospital" style={styles.inputText}></TextInput>
             <View style ={styles.Timebar}>
@@ -31,21 +40,95 @@ const SearchResults = ({navigation}) => {
             style= {styles.Image}
             source={require( '../../assets/mapsIMG.png' )}
             />
-          <Types />  
+     {/* the  details of the clien should be here */}
+     <View style={styles.Container}>
+             <Image style={styles.image} source='../assets/ambulance.png'></Image>
+          <View style={styles.middleContainer}>
+            <Text style= {styles.type}>
+               Jonathan Kagame
+            </Text>
+            <Text style={styles.time}>
+                8:03 pm drop off
+            </Text>
+
+
+          </View>
+       
+          <View style={styles.rightContainer}>
+            <Ionicons name={'pricetag'} size ={18} color={'green'} />
+            <Text style={styles.price}> 
+                ksh {7000}
+            </Text>
+            
+
+
+          </View>
+<View>
+ 
+</View>
+            
+        </View>
           <Pressable onPress={pressHandler} style={styles.confirm}> 
               <Text style={styles.text}>
-                Confirm Requests
+                Confirm Trip
               </Text>
             </Pressable>
         </View>
     )
 }
 const styles = StyleSheet.create({
+    Title:{
+        textAlign:'center',
+        fontSize:20,
+        fontWeight:'600',
+        margin:10,
+      
+      },
+      Container:{
+        flexDirection:'row',
+        justifyContent: 'space-between',
+        alignItems:'center',
+        padding: 20,
+        
+      
+      },
+      image:{
+        height:60,
+        width:60,
+        resizeMode:'contain',
+      },
+      middleContainer:{
+      marginHorizontal:10,
+      flex:1,
+      marginBottom:5,
+      },
+      
+      type:{
+      fontWeight:'bold',
+      fontSize:15,
+      
+      },
+      rightContainer:{
+      alignItems:'center',
+      width:100,
+      justifyContent:'flex-end',
+      flexDirection:'row',
+      
+      
+      },
+      time :{
+      color:'#5d5d5d',
+      },
+      price:{
+      fontWeight:'bold',
+      fontSize:14,
+      marginLeft:5,
+      },
     confirm:{
         padding: 10,
-        margin:10,
-        marginRight:10,
-        backgroundColor:'red',
+     
+        
+        backgroundColor:'green',
         alignItems:'center',
         
       },

@@ -11,6 +11,8 @@ const confirm = () => {
         <View>
             <View style ={styles.Status}>
               <Text style= {styles.Title}>Ambulance En-route</Text> 
+              <Text style= {styles.SubTitle}>From: Conquest</Text>
+              <Text style= {styles.SubTitle}>To: Getrudes</Text>
             </View>
 
             <Image 
@@ -18,7 +20,7 @@ const confirm = () => {
             source={require( '../../assets/mapsIMG.png' )}
             />
              <View style={styles.Container}>
-             <Image style={styles.image} source='../../assets/ambulance.png'></Image>
+             <Image style={styles.image} source='../assets/ambulance.png'></Image>
           <View style={styles.middleContainer}>
             <Text style= {styles.type}>
                Amref Ambulance

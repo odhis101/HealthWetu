@@ -10,6 +10,9 @@ import { createAppContainer } from 'react-navigation';
 import EnRoute from '../screens/EnRoute';
 import Logininput from '../screens/Logininput';
 import RegisterInput from '../screens/RegisterInput';
+import ServerHome from '../screens/ServerHome';
+import ServerStartScreen from '../screens/ServerStartScreen';
+import NewRequest from '../screens/NewRequest';
 
 const screens = {
 
@@ -23,13 +26,13 @@ const screens = {
         screen: RegisterInput,
     },
     Home:{
-        screen:Homesearch
+        screen:ServerHome
     },
-    destination:{
-        screen:Destination
+    ServerStartScreen:{
+        screen:ServerStartScreen
     },
-    searchResults:{
-        screen:SearchResults
+    NewRequest:{
+        screen:NewRequest
     },
     EnRoute:{
         screen:EnRoute
@@ -39,6 +42,6 @@ const screens = {
 }
 
 
-const Stack = createStackNavigator(screens);
+const ServerStack = createStackNavigator(screens);
 
-export default createAppContainer(Stack)
+export default createAppContainer(ServerStack)

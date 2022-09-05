@@ -31,8 +31,7 @@ const Destination = ({navigation}) => {
             </View>
 
             </View>
-            <ModuleButton text = 'Current Location '/>
-            
+            <ModuleButton text = 'Current Location  ' onPress={pressHandler}/>
             <OurButton text='Custom Hospital' onPress={pressHandler}/>
             <OurButton text='Nearest Hospital' onPress={pressHandler}/>
             
