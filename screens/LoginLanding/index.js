@@ -12,6 +12,10 @@ const LoginLanding = ({navigation}) => {
         navigation.navigate('Logininput');
         
     }
+    const signup =() =>{
+      navigation.navigate('RegisterInput');
+      
+  }
     return(
         <View>
        <Image 
@@ -20,7 +24,7 @@ const LoginLanding = ({navigation}) => {
             />
         <View style={styles.container}>
         <Loginbtn text='login 'onPress={pressHandler} />
-        <Loginbtn text='Sign Up' onPress={pressHandler}/>
+        <Loginbtn text='Sign Up' onPress={signup}/>
         <Text style={styles.suggest}>New Ambulance? </Text>
         </View>
 
