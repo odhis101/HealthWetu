@@ -59,10 +59,10 @@ const styles = StyleSheet.create({
     },
 
     container:{
-    margin:10,
+    margin: 'auto',
     backgroundColor:'white',
-    width:370,
-    height:500,
+    width:'100%',
+    height:'100%',
     borderRadius:10,
     shadowColor: "#000",
     shadowOffset: {
@@ -75,11 +75,11 @@ const styles = StyleSheet.create({
     elevation: 15,
    },
    containers:{
-    margin:10,
+    
     backgroundColor:'white',
-    marginLeft:20,
-    width:330,
-    height:500,
+    margin:'5%',
+    width:'80%',
+    height: '100%',
    
    },
    Image:{
@@ -91,7 +91,6 @@ const styles = StyleSheet.create({
    },
    title:{
     marginTop: 15,
-  
     fontSize:25,
     fontWeight:'600',
    },
@@ -108,7 +107,7 @@ horizontalBorder:{
     margin:20,
     justifyContent:'center',
     alignItems:'center',
-    height:20,
+    height:'2%',
     width:2,
     backgroundColor:'#ED1918'
 },

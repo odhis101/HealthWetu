@@ -8,7 +8,7 @@ const confirm = () => {
   console.warn('confirm')
 }
     return(
-        <View>
+        <View style={styles.container}>
             <View style ={styles.Status}>
               <Text style= {styles.Title}>Ambulance En-route</Text> 
               <Text style= {styles.SubTitle}>From: Conquest</Text>
@@ -59,6 +59,10 @@ const confirm = () => {
 }
 const styles = StyleSheet.create({
 
+  container:{
+    height:'80%',
+    resizeMode: 'cover',
+  },
 call :{
   color:'red',
 },
@@ -69,6 +73,8 @@ call :{
 },
 Status:{
   backgroundColor:'white',
+  paddingTop: '5%',
+  paddingBottom:'5%',
   shadowColor: "#000",
   shadowOffset: {
       width: 0,

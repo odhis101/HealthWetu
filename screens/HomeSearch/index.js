@@ -16,7 +16,7 @@ const Homesearch = ({navigation}) => {
     }
     return(
         <ScrollView>
-        <View>
+        <View styles={styles.container}>
              <Image 
             style= {styles.Image}
             source={require( '../../assets/HealthWetu.png' )}
@@ -28,12 +28,16 @@ const Homesearch = ({navigation}) => {
         <ModuleButton text = 'calling for a friend '/>
         <OurData/>
 
-   </View>
-   </ScrollView>
+        </View>
+        </ScrollView>
     )
 }
 const styles = StyleSheet.create({
   
+    container:{
+        alignItems: 'center',
+
+    },
     inputText:{
         fontSize:20,
         fontWeight:'600',
@@ -45,9 +49,9 @@ const styles = StyleSheet.create({
     Image:{
         
         paddingTop:20,
-        margin:50,
-        height:350,
-        width:'auto',
+        margin: 'auto',
+        height:'40%',
+        width:'100%',
     },
     Timebar:{
         flexDirection:'row',

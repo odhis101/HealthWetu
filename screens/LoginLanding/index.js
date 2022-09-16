@@ -17,16 +17,16 @@ const LoginLanding = ({navigation}) => {
       
   }
     return(
-        <View>
-       <Image 
+        <View styles={styles.container}>
+          <Image 
             style= {styles.Image}
             source={require( '../../assets/HealthWetu.png' )}
-            />
-        <View style={styles.container}>
-        <Loginbtn text='login 'onPress={pressHandler} />
-        <Loginbtn text='Sign Up' onPress={signup}/>
-        <Text style={styles.suggest}>New Ambulance? </Text>
-        </View>
+          />
+          <View style={styles.cardContainer}>
+          <Loginbtn text='login 'onPress={pressHandler} />
+          <Loginbtn text='Sign Up' onPress={signup}/>
+          <Text style={styles.suggest}>New Ambulance? </Text>
+          </View>
 
 
         </View>
@@ -36,15 +36,20 @@ const LoginLanding = ({navigation}) => {
     )
 }
 const styles = StyleSheet.create({
-    Image:{
-        
-        paddingTop:20,
-        margin:50,
-        height:350,
-        width:'auto',
-    },
   container:{
+    width: '100%',
+    height: '70%',
+  },
+  Image:{
+      
+      paddingTop:20,
+      margin:50,
+      height:'40%',
+      width:'auto',
+  },
+  cardContainer:{
     marginTop:60,
+
   },
   suggest:{
     marginTop:10,
