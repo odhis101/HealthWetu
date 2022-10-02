@@ -3,39 +3,81 @@ import { StyleSheet, Text, TouchableOpacity, View, Image,TextInput,Button,Pressa
 import HomeLogo from '../../components/homeLogo';
 import Types from '../../components/DiffrentTypes';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import MapView,{PROVIDER_GOOGLE, Marker} from 'react-native-maps';
+import cars from '../../assets/data/cars';
+import MapViewDirections from 'react-native-maps-directions';
+import { useRoute } from '@react-navigation/native'; 
 const SearchResults = ({navigation}) => {
   const [fromText, setFromText] = useState()
   const [destinationText,setDestinationText] = useState();
   const [originPlace,setOriginPlace]= useState()
   const [Desitnation,setDesitnation]= useState()
+
+  console.log(navigation.props())
+  console.log('hello world')
   const pressHandler =() =>{
-    navigation.navigate('EnRoute');
-    
+  navigation.navigate('EnRoute');
+}
+const getImage=(type) => {
+  if (type === 'UberX') {
+    return require('../../assets/helicopter.png');
+  }
+  if (type === 'Comfort') {
+    return require('../../assets/helicopter.png');
+  }
+  return require('../../assets/helicopter.png');
+}
+const origin ={
+  latitude: 37.78825,
+  longitude: -122.4324,
+}
+const destination ={
+  latitude: 38.78825,
+  longitude: -122.4324,
 }
     return(
         <View>
-          <View style ={styles.container}>
-           
-            <View style={styles.inputBox}>
-            <TextInput value={fromText} onChangeText = {setFromText}placeholder="Hospital" style={styles.inputText}></TextInput>
-            <View style ={styles.Timebar}>
-            <AntDesign name ={'arrowright'} size ={16} color={'red'}></AntDesign> 
             
-            </View>
+               <MapView style={styles.Image}
+                provider={PROVIDER_GOOGLE}
+               initialRegion={{
+                latitude: 37.78825,
+                longitude: -122.4324,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }} 
+              >
+              <Marker 
+              coordinate={{latitude:37.78825,longitude: -122.4324}}
+            >
+              <Image source={require('../../assets/helicopter.png')} style={{width:60,height:60,resizeMode:'contain'}}/>
+              </Marker>
 
-            </View>
-            </View>
+              <MapViewDirections
+              origin={origin}
+              destination={destination}
+              strokeWidth={ 5 }
+              strokeColor= 'red'
+              apikey={'AIzaSyAeRdORzU5z5rUedWcqGLZxRwE_6w9isRc'}
+              />
+              <Marker 
+         
+              coordinate={origin}
+              title={'origin'}
 
+              />
+              <Marker 
+              coordinate={destination}
+              title={'destination'}
+              />
+              </MapView>
             
-             <Image 
-            style= {styles.Image}
-            source={require( '../../assets/mapsIMG.png' )}
-            />
           <Types />  
           <Pressable onPress={pressHandler} style={styles.confirm}> 
               <Text style={styles.text}>
                 Confirm Requests
               </Text>
+             
             </Pressable>
         </View>
     )

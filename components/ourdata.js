@@ -4,7 +4,7 @@ const OurData = (props) => {
    
     return(
     <View>
-        <View style ={styles.container}>
+        <View style ={styles.containerss}>
         <Image 
             style= {styles.Image}
             source={require( '../assets/face.jpg' )}
@@ -57,12 +57,12 @@ const styles = StyleSheet.create({
         
 
     },
+    containerss:{
 
-    container:{
     margin: 'auto',
     backgroundColor:'white',
     width:'100%',
-    height:'100%',
+    height: 1000,
     borderRadius:10,
     shadowColor: "#000",
     shadowOffset: {

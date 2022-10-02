@@ -23,9 +23,11 @@ const screens = {
     RegisterInput:{
         screen: RegisterInput,
     },
+    
     Home:{
         screen:Homesearch
     },
+    
     destination:{
         screen:Destination
     },

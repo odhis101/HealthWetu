@@ -1,39 +1,102 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { StyleSheet, Text, Image, TouchableOpacity, View,TextInput,Button } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Calling from '../../../components/calling';
 import OurButton from '../../../components/GoToButton';
 import ModuleButton from '../../../components/moduleButton';
-//import styles from './styles.js';
+import * as Location from 'expo-location';
 
 
    
     
    
 const Destination = ({navigation}) => {
-    const [fromText, setFromText] = useState()
-    const [destinationText,setDestinationText] = useState();
-   const [originPlace,setOriginPlace]= useState()
+ 
+
+   const [originPlace,setOriginPlace]= useState(originPlace)
    const [Desitnation,setDesitnation]= useState()
+
    const pressHandler =() =>{
     navigation.navigate('searchResults');
     
 }
+   useEffect(() => {
+    if (originPlace && Desitnation) {
+        console.log(originPlace)
+        navigation.navigate('searchResults', 
+        originPlace,
+        Desitnation
+        
+        );
+
+    }})
+  
+    
+    
+ 
     return(
+        useEffect(() => {
+            (async () => {
+              
+              let { status } = await Location.requestForegroundPermissionsAsync();
+              if (status !== 'granted') {
+                setErrorMsg('Permission to access location was denied');
+                return;
+              }
+        
+              let location = await Location.getCurrentPositionAsync({});
+              setLocation(location);
+            })();
+          }, []),
         <View>
             <View style ={styles.container}>
             <View style={styles.inputBox}>
-            <TextInput value={fromText} onChangeText = {setFromText}placeholder="Current Location" style={styles.inputText}></TextInput>
+            <GooglePlacesAutocomplete
+      placeholder='What is your Current Location'
+      onPress={(data, details = null) => {
+        // 'details' is provided when fetchDetails = true
+        setOriginPlace({data, details});
+
+        //console.log(data, details);
+      }}
+      enablePoweredBygoogle={false}
+      fetchDetails= {true}
+      currentLocation={true}
+      currentLocationLabel="Current Location"
+      query={{
+        key: 'AIzaSyAeRdORzU5z5rUedWcqGLZxRwE_6w9isRc',
+        language: 'en',
+        components: 'country:ke',
+      }}
+    />
             <View style ={styles.Timebar}>
             <AntDesign name ={'arrowright'} size ={16} color={'red'}></AntDesign> 
-            
             </View>
-
             </View>
-            <ModuleButton text = 'Current Location  ' onPress={pressHandler}/>
-            <OurButton text='Custom Hospital' onPress={pressHandler}/>
+            <ModuleButton text = 'Current Locations  ' onPress={pressHandler}/>
+            <View style={styles.inputBox}>
+            <GooglePlacesAutocomplete
+      placeholder='Which hospital are you going to?'
+      onPress={(data, details = null) => {
+        // 'details' is provided when fetchDetails = true
+        setDesitnation({data, details});
+       // console.log(data, details);
+      }}
+      enablePoweredBygoogle={false}
+      fetchDetails= {true}
+      query={{
+        key: 'AIzaSyAeRdORzU5z5rUedWcqGLZxRwE_6w9isRc',
+        language: 'en',
+        components: 'country:ke',
+      }}
+    />
+            <View style ={styles.Timebar}>
+            <AntDesign name ={'arrowright'} size ={16} color={'red'}></AntDesign> 
+            </View>
+            </View>
             <OurButton text='Nearest Hospital' onPress={pressHandler}/>
+    
             
         </View>
        

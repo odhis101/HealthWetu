@@ -3,9 +3,19 @@ import { StyleSheet, Text, TouchableOpacity, View, Image, Pressable,Button} from
 import Types from '../../components/DiffrentTypes';
 import Ionicons from "react-native-vector-icons/Ionicons"
 import {TextInput} from 'react-native-gesture-handler';
+import MapView,{PROVIDER_GOOGLE, Marker} from 'react-native-maps';
+import MapViewDirections from 'react-native-maps-directions';
 const EnRoute = (props) => {
 const confirm = () => {
   console.warn('confirm')
+}
+const destination ={
+  latitude: 37.78825,
+  longitude: -122.4324,
+}
+const origin ={
+  latitude: 38.78825,
+  longitude: -122.4324,
 }
     return(
         <View style={styles.container}>
@@ -15,10 +25,28 @@ const confirm = () => {
               <Text style= {styles.SubTitle}>To: Getrudes</Text>
             </View>
 
-            <Image 
-            style= {styles.Image}
-            source={require( '../../assets/mapsIMG.png' )}
-            />
+            <MapView style={styles.Image}
+                provider={PROVIDER_GOOGLE}
+               initialRegion={{
+                latitude: 37.78825,
+                longitude: -122.4324,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }} 
+              >
+              <Marker 
+              coordinate={{latitude:37.78825,longitude: -122.4324}}
+            >
+              <Image source={require('../../assets/helicopter.png')} style={{width:60,height:60,resizeMode:'contain'}}/>
+              </Marker>
+              <MapViewDirections
+    origin={origin}
+    destination={destination}
+    apikey={'AIzaSyAeRdORzU5z5rUedWcqGLZxRwE_6w9isRc'}
+    strokeWidth={5}
+    strokeColor="red"
+  />
+              </MapView>
              <View style={styles.Container}>
              <Image style={styles.image} source='../assets/ambulance.png'></Image>
           <View style={styles.middleContainer}>
