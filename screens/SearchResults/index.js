@@ -13,7 +13,7 @@ const SearchResults = ({navigation}) => {
   const [originPlace,setOriginPlace]= useState()
   const [Desitnation,setDesitnation]= useState()
 
-  console.log(navigation.props())
+  console.log(navigation.getParam())
   console.log('hello world')
   const pressHandler =() =>{
   navigation.navigate('EnRoute');

@@ -11,6 +11,7 @@ import Stack from './routes/Stack';
 import ServerStack from './routes/ServerStack';
 import { useEffect } from 'react';
 import * as Location from 'expo-location';
+import Root from './navigation/Root';
 
 
 //navigator.geolocation = require('@react-native-community/geolocation');
@@ -43,7 +44,7 @@ const App = () => {
       }
     },[])
   return (
-    <Stack/>
+    <Root/>
  
   );
 };
