@@ -7,33 +7,65 @@ import MapView,{PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import cars from '../../assets/data/cars';
 import MapViewDirections from 'react-native-maps-directions';
 import { useRoute } from '@react-navigation/native'; 
+import { API, graphqlOperation, Auth } from 'aws-amplify';
+import { createOrder} from '../../src/graphql/mutations';
+
 const SearchResults = ({navigation}) => {
   const [fromText, setFromText] = useState()
   const [destinationText,setDestinationText] = useState();
-  const [originPlace,setOriginPlace]= useState()
+  //const [originPlace,setOriginPlace]= useState()
+  const route = useRoute();
   const [Desitnation,setDesitnation]= useState()
-
-  console.log(navigation.getParam())
+  const {originPlace, destinationPlace} = route.params
+  console.log('this is',originPlace,destinationPlace)
   console.log('hello world')
   const pressHandler =() =>{
   navigation.navigate('EnRoute');
 }
-const getImage=(type) => {
-  if (type === 'UberX') {
-    return require('../../assets/helicopter.png');
-  }
-  if (type === 'Comfort') {
-    return require('../../assets/helicopter.png');
-  }
-  return require('../../assets/helicopter.png');
-}
+
 const origin ={
-  latitude: 37.78825,
-  longitude: -122.4324,
+  latitude: originPlace.details.geometry.location.lat,
+  longitude: originPlace.details.geometry.location.lng,
 }
 const destination ={
-  latitude: 38.78825,
-  longitude: -122.4324,
+  latitude:destinationPlace.details.geometry.location.lat,
+  longitude: destinationPlace.details.geometry.location.lng,
+}
+const onSubmit = async () => {
+
+  // submit to server
+  try {
+    const userInfo = await Auth.currentAuthenticatedUser();
+
+    const date = new Date();
+    const input = {
+      createdAt: date.toISOString(),
+      originLatitude: originPlace.details.geometry.location.lat,
+      oreiginLongitude: originPlace.details.geometry.location.lng,
+      type: 'Ambulance',
+      destLatitude: destinationPlace.details.geometry.location.lat,
+      destLongitude: destinationPlace.details.geometry.location.lng,
+
+      userId: userInfo.attributes.sub,
+      status: "NEW",
+    }
+
+
+    const response = await API.graphql(
+      graphqlOperation(
+        createOrder, {
+          input: input
+        },
+      )
+    )
+
+    console.log('it worked ?',createOrder);
+
+    navigation.navigate('OrderPage', { id: response.data.createOrder.id });
+  } catch (e) {
+    console.log('no it didnt work');
+    console.error(e);
+  }
 }
     return(
         <View>
@@ -41,14 +73,14 @@ const destination ={
                <MapView style={styles.Image}
                 provider={PROVIDER_GOOGLE}
                initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
+                latitude: originPlace.details.geometry.location.lat,
+                longitude: originPlace.details.geometry.location.lng,
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421,
               }} 
               >
               <Marker 
-              coordinate={{latitude:37.78825,longitude: -122.4324}}
+              coordinate={{latitude:originPlace.details.geometry.location.lat,longitude: originPlace.details.geometry.location.lng}}
             >
               <Image source={require('../../assets/helicopter.png')} style={{width:60,height:60,resizeMode:'contain'}}/>
               </Marker>
@@ -73,7 +105,7 @@ const destination ={
               </MapView>
             
           <Types />  
-          <Pressable onPress={pressHandler} style={styles.confirm}> 
+          <Pressable onPress={onSubmit} style={styles.confirm}> 
               <Text style={styles.text}>
                 Confirm Requests
               </Text>

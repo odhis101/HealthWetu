@@ -2,17 +2,18 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,ScrollView,SafeAreaView,PermissionsAndroid,Platform} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import RegisterInput from './screens/RegisterInput';
-import Stack from './routes/Stack';
-import ServerStack from './routes/ServerStack';
+
 import { useEffect } from 'react';
 import * as Location from 'expo-location';
+import Amplify from 'aws-amplify';
+import config from './src/aws-exports';
 import Root from './navigation/Root';
 
+import { withAuthenticator } from 'aws-amplify-react-native'
+
+
+Amplify.configure(config)
 
 //navigator.geolocation = require('@react-native-community/geolocation');
 const App = () => {
@@ -48,4 +49,4 @@ const App = () => {
  
   );
 };
-export default App;
+export default withAuthenticator(App);

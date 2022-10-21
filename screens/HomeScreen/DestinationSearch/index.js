@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+ import React, {useState,useEffect} from 'react';
 import { StyleSheet, Text, Image, TouchableOpacity, View,TextInput,Button } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -6,33 +6,30 @@ import Calling from '../../../components/calling';
 import OurButton from '../../../components/GoToButton';
 import ModuleButton from '../../../components/moduleButton';
 import * as Location from 'expo-location';
+import { useNavigation } from '@react-navigation/native';
 
 
    
     
    
-const Destination = ({navigation}) => {
- 
+const Destination = () => {
+  const [originPlace, setOriginPlace] = useState(null);
+  const [destinationPlace, setDestinationPlace] = useState(null);
 
-   const [originPlace,setOriginPlace]= useState(originPlace)
-   const [Desitnation,setDesitnation]= useState()
+  const navigation = useNavigation();
 
-   const pressHandler =() =>{
-    navigation.navigate('searchResults');
-    
-}
-   useEffect(() => {
-    if (originPlace && Desitnation) {
-        console.log(originPlace)
-        navigation.navigate('searchResults', 
+  const checkNavigation = () => {
+    if (originPlace && destinationPlace) {
+      navigation.navigate('searchResults', {
         originPlace,
-        Desitnation
-        
-        );
+        destinationPlace,
+      })
+    }
+  }
 
-    }})
-  
-    
+  useEffect(() => {
+    checkNavigation();
+  }, [originPlace, destinationPlace]);
     
  
     return(
@@ -74,13 +71,13 @@ const Destination = ({navigation}) => {
             <AntDesign name ={'arrowright'} size ={16} color={'red'}></AntDesign> 
             </View>
             </View>
-            <ModuleButton text = 'Current Locations  ' onPress={pressHandler}/>
+            <ModuleButton text = 'Current Locations  '/>
             <View style={styles.inputBox}>
             <GooglePlacesAutocomplete
       placeholder='Which hospital are you going to?'
       onPress={(data, details = null) => {
         // 'details' is provided when fetchDetails = true
-        setDesitnation({data, details});
+        setDestinationPlace({data, details});
        // console.log(data, details);
       }}
       enablePoweredBygoogle={false}
@@ -95,7 +92,7 @@ const Destination = ({navigation}) => {
             <AntDesign name ={'arrowright'} size ={16} color={'red'}></AntDesign> 
             </View>
             </View>
-            <OurButton text='Nearest Hospital' onPress={pressHandler}/>
+            <OurButton text='Nearest Hospital' />
     
             
         </View>
