@@ -6,9 +6,29 @@ import Calling from '../../components/calling';
 import OurData from '../../components/ourdata';
 import OurButton from '../../components/GoToButton';
 import ModuleButton from '../../components/moduleButton';
-
+import { API, graphqlOperation, Auth } from 'aws-amplify';
+import {useEffect,useState} from "react";
 //import styles from './styles.js';
 const Homesearch = ({navigation}) => {
+
+    const [users, setUsers] = useState();
+  
+    useEffect(()  => {
+        const fetchData = async () => {
+            const userInfo = await Auth.currentAuthenticatedUser();
+         
+            setUsers(userInfo.attributes.sub);
+        
+        }
+        fetchData();
+    },[] )
+// this is a function to print the json data from auth aws 
+    const onSubmit = async () => {
+        const userInfo = await Auth.currentAuthenticatedUser();
+        console.log(userInfo.getUsername())
+    }
+           
+      
    
     const pressHandler =() =>{
         navigation.navigate('destination');
@@ -26,6 +46,7 @@ const Homesearch = ({navigation}) => {
         
         <OurButton text='Where are you ' onPress={pressHandler}/>
         <ModuleButton text = 'calling for a friend '/>
+        <Text> {users} helos</Text>
         <OurData/>
 
         </View>

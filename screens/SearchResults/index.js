@@ -9,6 +9,9 @@ import MapViewDirections from 'react-native-maps-directions';
 import { useRoute } from '@react-navigation/native'; 
 import { API, graphqlOperation, Auth } from 'aws-amplify';
 import { createOrder} from '../../src/graphql/mutations';
+import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, getDoc, getDocs, where, query } from "firebase/firestore"; 
+
+import { db } from '../../components/config';
 
 const SearchResults = ({navigation}) => {
   const [fromText, setFromText] = useState()
@@ -31,6 +34,35 @@ const destination ={
   latitude:destinationPlace.details.geometry.location.lat,
   longitude: destinationPlace.details.geometry.location.lng,
 }
+const onSend = async () => {
+
+  const userInfo = await Auth.currentAuthenticatedUser();
+  //console.log(userInfo.attributes)
+  const name =userInfo.signInUserSession.accessToken.payload.username
+  console.log('here it is ')
+  const userInfos = 'joshua'
+  const date = new Date();
+  addDoc(collection(db, "orders"), {     
+    username: name,
+    originLatitude: originPlace.details.geometry.location.lat,
+    oreiginLongitude: originPlace.details.geometry.location.lng,
+    destLatitude: destinationPlace.details.geometry.location.lat,
+    destLongitude: destinationPlace.details.geometry.location.lng,
+    date: date,
+    status: "NEW",
+    type: "ambulance",
+  }).then(() => { 
+    // Data saved successfully!
+    console.log('data submitted');  
+    //navigation.navigate('EnRoute');
+
+  }).catch((error) => {
+        // The write failed...
+        console.log(error);
+  });
+
+
+}
 const onSubmit = async () => {
 
   // submit to server
@@ -41,7 +73,7 @@ const onSubmit = async () => {
     const input = {
       createdAt: date.toISOString(),
       originLatitude: originPlace.details.geometry.location.lat,
-      oreiginLongitude: originPlace.details.geometry.location.lng,
+      originLongitude: originPlace.details.geometry.location.lng,
       type: 'Ambulance',
       destLatitude: destinationPlace.details.geometry.location.lat,
       destLongitude: destinationPlace.details.geometry.location.lng,
@@ -105,7 +137,7 @@ const onSubmit = async () => {
               </MapView>
             
           <Types />  
-          <Pressable onPress={onSubmit} style={styles.confirm}> 
+          <Pressable onPress={onSend} style={styles.confirm}> 
               <Text style={styles.text}>
                 Confirm Requests
               </Text>
