@@ -13,6 +13,7 @@ import { createAppContainer } from 'react-navigation';
 import EnRoute from '../screens/EnRoute';
 import Homesearch from '../screens/HomeSearch';
 
+
 const Stack = createStackNavigator();
 const RootNavigator = () => {
     return (

@@ -67,6 +67,24 @@ const Destination = () => {
         components: 'country:ke',
       }}
     />
+            <GooglePlacesAutocomplete
+      placeholder='What is your Current Location'
+      onPress={(data, details = null) => {
+        // 'details' is provided when fetchDetails = true
+        setOriginPlace({data, details});
+
+        //console.log(data, details);
+      }}
+      enablePoweredBygoogle={false}
+      fetchDetails= {true}
+      currentLocation={true}
+      currentLocationLabel="Current Location"
+      query={{
+        key: 'AIzaSyAeRdORzU5z5rUedWcqGLZxRwE_6w9isRc',
+        language: 'en',
+        components: 'country:ke',
+      }}
+    />
             <View style ={styles.Timebar}>
             <AntDesign name ={'arrowright'} size ={16} color={'red'}></AntDesign> 
             </View>

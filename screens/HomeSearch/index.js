@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, Image, TouchableOpacity, View,ScrollView,Button} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Calling from '../../components/calling';
+
 import OurData from '../../components/ourdata';
 import OurButton from '../../components/GoToButton';
 import ModuleButton from '../../components/moduleButton';
