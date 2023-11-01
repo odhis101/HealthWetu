@@ -30,7 +30,7 @@ const App = () => {
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
         //To Check, If Permission is granted
-        alert('Location Permission Granted.s');
+        alert('Location Permission Granted.');
       }}
       catch (err) { return callback && callback(err); }}
 
